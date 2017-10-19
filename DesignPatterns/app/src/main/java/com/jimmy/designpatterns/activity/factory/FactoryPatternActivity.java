@@ -1,4 +1,4 @@
-package com.jimmy.designpatterns.activity;
+package com.jimmy.designpatterns.activity.factory;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
@@ -30,5 +30,17 @@ public class FactoryPatternActivity extends Activity {
 
     private void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_factory);
+
     }
+
+    public abstract class Production {
+        void make() {
+        }
+    }
+
+    public abstract class Factory {
+        abstract <T extends Production> T createProduction(Class<T> clz);
+    }
+
+
 }
