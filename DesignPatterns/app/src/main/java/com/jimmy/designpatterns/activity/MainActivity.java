@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.jimmy.designpatterns.R;
 import com.jimmy.designpatterns.activity.factory.FactoryPatternActivity;
+import com.jimmy.designpatterns.activity.observer.ObserverPatternActivity;
 import com.jimmy.designpatterns.activity.prototype.PrototypePatternActivity;
 import com.jimmy.designpatterns.databinding.MainBinding;
 
@@ -37,6 +38,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.two:
                 intent = new Intent(this, PrototypePatternActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.three:
+                intent = new Intent(this, ObserverPatternActivity.class);
                 startActivity(intent);
                 break;
         }

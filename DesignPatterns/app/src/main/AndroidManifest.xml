@@ -25,5 +25,9 @@
             android:name=".activity.prototype.PrototypePatternActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".activity.observer.ObserverPatternActivity"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
     </application>
 </manifest>

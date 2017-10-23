@@ -31,7 +31,18 @@
             android:background="#99338787"
             android:gravity="center"
             android:onClick="@{OnClickListener}"
-            android:text="F2"
+            android:text="Prototype"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/three"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="#99338787"
+            android:gravity="center"
+            android:onClick="@{OnClickListener}"
+            android:text="Observer"
             android:textSize="22sp" />
     </LinearLayout>
 
