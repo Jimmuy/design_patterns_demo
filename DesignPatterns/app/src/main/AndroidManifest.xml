@@ -29,5 +29,9 @@
             android:name=".activity.observer.ObserverPatternActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".activity.test.EncryptDemoActivity"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
     </application>
 </manifest>
