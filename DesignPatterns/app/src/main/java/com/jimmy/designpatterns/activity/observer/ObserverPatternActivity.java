@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.jimmy.designpatterns.R;
 import com.jimmy.designpatterns.databinding.ObserverBinding;
@@ -21,9 +22,11 @@ import java.util.Observable;
  * 观察者模式的简单使用
  **/
 
-public class ObserverPatternActivity extends Activity {
+public class ObserverPatternActivity extends Activity implements View.OnClickListener {
 
     private ObserverBinding binding;
+    private StringBuilder sb;
+    private ObservableImpl impl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +36,8 @@ public class ObserverPatternActivity extends Activity {
 
     private void initView() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_observer);
-
+        binding.btnPublish.setOnClickListener(this);
+        sb = new StringBuilder("");
 
         ObserverImpl observer1 = new ObserverImpl("test 1");
         ObserverImpl observer2 = new ObserverImpl("test 2");
@@ -42,14 +46,23 @@ public class ObserverPatternActivity extends Activity {
         ObserverImpl observer5 = new ObserverImpl("test 5");
 
 
-        ObservableImpl impl = new ObservableImpl();
+        impl = new ObservableImpl();
         impl.addObserver(observer1);
         impl.addObserver(observer2);
         impl.addObserver(observer3);
         impl.addObserver(observer4);
         impl.addObserver(observer5);
 
-        impl.notifyAllObserver("通知所有观察者");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_publish:
+                sb.delete(0, sb.length());
+                impl.notifyAllObserver("通知所有观察者");
+                break;
+        }
     }
 
     public class ObserverImpl implements java.util.Observer {
@@ -62,7 +75,9 @@ public class ObserverPatternActivity extends Activity {
 
         @Override
         public void update(Observable o, Object arg) {
-            System.out.println("name: " + name + " observable :" + o + " object :" + arg.toString());
+            sb.append("name: " + name + " observable :" + o + " object :" + arg.toString() + "\n");
+            binding.tvReceiver.setText(sb.toString());
+            System.out.println(sb.toString());
         }
     }
 
